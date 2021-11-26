@@ -1,0 +1,137 @@
+﻿@model SDA_Ecommerce.Models.Account.SignUpVM
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<title>Sign Up</title>
+	<style>
+		b {
+			color: #33cabb;
+		}
+	</style>
+</head>
+<body>
+	<div class="content pt-4">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-5 contents">
+					<div class="row justify-content-center">
+						<div class="col-md-12">
+							<div class="form-block">
+								<div class="mb-4">
+
+									<form class="needs-validation" novalidate action="SignUp" method="post">
+										<h3>Sign Up to <b>The World</b></h3>
+										<div class="text-danger" asp-validation-summary="ModelOnly"></div>
+										<span>Your personal information is hidden when you submit new issues</span>
+
+										<div class="row">
+											<div class="col form-floating  mb-3">
+												<input asp-for="FName" required type="text" class="form-control" placeholder="First name">
+												<label class="ml-3" for="fullnameRegister">First Name</label>
+												<span asp-validation-for="FName" class="text-danger"></span>
+											</div>
+											<div class="col form-floating mb-3">
+												<input asp-for="LName" required type="text" class="form-control" placeholder="Last name">
+												<label class="ml-3" for="fullnameRegister">Family Name</label>
+												<span asp-validation-for="LName" class="text-danger"></span>
+											</div>
+										</div>
+
+
+
+										<!-- Email input -->
+										<div class="form-floating mb-3">
+											<input asp-for="Email" required type="email" class="form-control" id="emailRegister" placeholder="name@example.com">
+											<label for="emailRegister">Email address</label>
+											<span asp-validation-for="Email" class="text-danger"></span>
+
+										</div>
+
+
+										<!-- Password input -->
+										<div class="form-floating  mb-3">
+											<input asp-for="Password" required type="password" id="passRegister" placeholder="Password" class="form-control form-control-lg" />
+											<label class="form-label" for="passRegister">Password</label>
+											<span asp-validation-for="Password" class="text-danger"></span>
+										</div>
+										<div class="form-floating pb-1 mb-3">
+											<input required type="password" class="form-control form-control-lg" asp-for="PasswordConfirmation" />
+											<label class="form-label" for="confirmpassRegister"> Confirm Password</label>
+											<span asp-validation-for="PasswordConfirmation" class="text-danger"></span>
+										</div>
+										<div class="form-floating mb-3">
+											<input asp-for="PhoneNumber" required type="number" class="form-control" placeholder="name@example.com">
+											<label>Phone Number</label>
+											<span asp-validation-for="PhoneNumber" class="text-danger"></span>
+										</div>
+										<div class="form-floating mb-3">
+											<input asp-for="Address" required type="text" class="form-control" id="emailRegister" placeholder="name@example.com">
+											<label for="emailRegister">Address</label>
+											<span asp-validation-for="Address" class="text-danger"></span>
+										</div>
+
+
+										<!-- Submit button -->
+										<button type="submit" class="btn btn-dark btn-lg btn-block rounded-pill">
+											<span id="divLoaderRegister" style="display:none;" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+											Register
+										</button>
+									</form>
+									<div class="divider d-flex align-items-center my-4">
+										<p class="text-center  fw-bold mx-3 mb-0 text-muted">OR</p>
+									</div>
+									<div class="d-grid mb-3">
+										<a type="submit" asp-controller="Account" asp-action="SignUpAction" class="btn rounded-pill btn-lg btn-success">
+											<i class=""></i> Already User? Login
+										</a>
+									</div>
+
+
+
+									<form method="post">
+
+										<div class="d-grid mb-2">
+											<button class="btn btn-lg btn-danger btn-google btn-login fw-bold text-uppercase rounded-pill" name="provider" value="Google" title="login with Google " type="submit">
+												<i class="fab fa-google me-2"></i> Continue with Google
+											</button>
+										</div>
+
+										<div class="d-grid">
+											<button name="provider" value="FaceBook" title="login with FaceBook" class="btn btn-lg rounded-pill btn-primary btn-facebook btn-login fw-bold text-uppercase" type="submit">
+												<i class="fab fa-facebook-f me-2"></i> Continue with Facebook
+											</button>
+										</div>
+
+									</form>
+
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+</body>
+</html>
+
+
+@section Scripts{
+<partial name="_ValidationScriptsPartial" />
+	@if (ViewBag.Message != null)
+    {
+       <script type="text/javascript">
+				window.onload = function () {
+					new swal("Account Created Successfully","Login And Enjoy!", "success").then(function() {
+		window.location = location.protocol + "//" + location.host +'/Account/login';
+	});
+				}
+     </script>
+    }
+}

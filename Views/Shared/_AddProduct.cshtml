@@ -1,0 +1,92 @@
+﻿@model SDA_Ecommerce.Models.ProductDetails
+
+<div class="modal fade" role="dialog" id="exampleModal1" data-backdrop="static" data-keyboard="false">
+<div class="modal-content">
+<h4>Add Product</h4>
+<hr />
+<div class="row">
+    <div class="col">
+        <form asp-action="View">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div
+            <div class="form-group">
+                <label asp-for="Category" class="control-label"></label>
+                <input asp-for="Category" class="form-control" />
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Cancelt</a>
+</div>
+</div>
+</div>
+
+
+<div class="modal fade" role="dialog" id="exampleModal" >
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" asp-action="AddProduct" asp-controller="Laptop" autocomplete="off" novalidate="novalidate">
+                <div class="modal-header">
+
+                    <h4 class="modal-title">Add New Laptop</h4>
+                 
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label asp-for="Name"></label>
+                        <input type="text" maxlength="100" class="form-control" asp-for="Name" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description">Descriptions</label>
+                        <textarea type="text" class="form-control" asp-for="Description"></textarea>
+                         <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Image">Image</label>
+                        <input type="text" class="form-control" asp-for="Image"></input>
+                         <span asp-validation-for="Image" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Price"></label>
+                        <input type="text" class="form-control" asp-for="Price"></input>
+                         <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                     <div class="form-group">
+                        <label asp-for="Brand"></label>
+                        <input type="text" class="form-control" asp-for="Brand"></input>
+                         <span asp-validation-for="Brand" class="text-danger"></span>
+                    </div>
+         
+                        
+                   <input id="id" type="hidden"></input>
+                        
+                    
+                  
+                <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success" >Add Item</button>&nbsp;
+                        <button type="button" id="btnDelete" class="btn btn-danger" onclick="onDeleteModel();">Delete</button>&nbsp
+                        <button type="button" hidden  id="btnEdit" class="btn btn-info hide" onclick="updateModalItem();">Edit Item</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

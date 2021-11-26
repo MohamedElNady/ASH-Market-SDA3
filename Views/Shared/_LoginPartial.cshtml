@@ -1,0 +1,37 @@
+﻿@using Ecommerce_SDA.Models.User
+@inject Microsoft.AspNetCore.Identity.SignInManager<ApplicationUser> signInManager
+@if (signInManager.IsSignedIn(User))
+{
+	<ul  class="nav navbar-nav navbar-right">
+		<li style="list-style-type: none; float:right;  " aria-haspopup="true" aria-expanded="true" class="dropdown">
+		<a class="dropdown-toggle text-dark nav-link" data-toggle="dropdown" href="#">
+			My Account
+			<span class="caret"></span>
+		</a>
+		<ul style="right: 4px; text-align-last:center; left: auto;" class="dropdown-menu ">
+			<li> <label class="text-black nav-link" style="text-align:center; color: deeppink;">Hello, @User.Identity.Name!</label></li>
+			<hr class="my-4">
+			<li><a class="text-black nav-link" asp-action="AccountSettings" asp-controller="AccountSettings">Settings</a></li>
+			<li><a class="text-black nav-link" asp-action="AddCategory" asp-controller="Admin">Add Category</a></li>
+			<li><a class="text-black nav-link" asp-action="AccountSettings" asp-controller="AccountSettings">Orders</a></li>
+			<li><a  type="submit" class="text-black nav-link"  asp-controller="Account" asp-action="Logout" >logout</a></li>
+		</ul>
+	</li>
+	</ul>
+	
+}
+else
+{
+
+	<div class="navbar-nav ml-auto action-buttons ">
+		<div class="nav-item">
+			<a  asp-area="" asp-controller="Account" asp-action="login"  class="nav-link dropdown-toggle mr-4">Login</a>
+
+		</div>
+		<div class="nav-item dropdown">
+			<a  asp-controller="Account" asp-action="signup"  class="btn btn-primary dropdown-toggle sign-up-btn">Sign up</a>
+			
+		</div>
+	</div>
+
+}
